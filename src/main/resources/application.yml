@@ -1,0 +1,29 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /api/v1
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 10
+      maximum-pool-size: 100
+      idle-timeout: 1200000
+      max-lifetime: 14400000
+      auto-commit: true
+      isolate-internal-queries: true
+      pool-name: test-db-pool
+  dynamic:
+    datasource:
+      hikari.pool-name: test-dynamic-db-pool
+      maximum-pool-size: 1
+
+#read write datasource configuration
+jdbc-app:
+  datasource:
+    readWrite:
+      url: jdbc:h2:mem:testdb
+      username: test
+      password: ''
